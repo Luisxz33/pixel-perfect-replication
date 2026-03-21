@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Criar conta • Grand Prix</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body class="auth">
+    <main class="auth-shell" data-page="register">
+      <section class="auth-left" aria-label="Banner">
+        <div class="auth-left__overlay"></div>
+        <div class="auth-left__particles" aria-hidden="true"></div>
+        <div class="auth-left__content">
+          <div class="brand">
+            <div class="brand__mark" aria-hidden="true">GP</div>
+            <div class="brand__text">
+              <span class="brand__name">GRAND PRIX</span>
+              <span class="brand__sub">Apostas & Cassino</span>
+            </div>
+          </div>
+
+          <h1 class="auth-left__title">Plataforma de Apostas Esportivas e Cassino Online</h1>
+          <p class="auth-left__subtitle">
+            Crie sua conta em poucos segundos e desbloqueie bônus, cassino ao vivo e apostas esportivas.
+          </p>
+
+          <div class="auth-left__highlights">
+            <div class="pill">Cadastro rápido</div>
+            <div class="pill">Ambiente seguro</div>
+            <div class="pill">UX otimizada</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="auth-right" aria-label="Cadastro">
+        <div class="auth-card" role="region" aria-label="Formulário de cadastro">
+          <div class="auth-card__header">
+            <div class="brand brand--compact">
+              <div class="brand__mark" aria-hidden="true">GP</div>
+              <div class="brand__text">
+                <span class="brand__name">GRAND PRIX</span>
+                <span class="brand__sub">Apostas & Cassino</span>
+              </div>
+            </div>
+            <p class="auth-card__hint">Crie sua conta</p>
+          </div>
+
+          <form id="registerForm" class="auth-form" novalidate>
+            <div class="field">
+              <label class="field__label" for="username">Nome de usuário</label>
+              <div class="field__control">
+                <span class="field__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21a8 8 0 1 0-16 0" />
+                    <circle cx="12" cy="7" r="4" />
+                  </svg>
+                </span>
+                <input id="username" name="username" type="text" placeholder="seu_usuario" autocomplete="username" required minlength="3" maxlength="20" />
+              </div>
+              <p class="field__error" data-error-for="username"></p>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="email">E-mail</label>
+              <div class="field__control">
+                <span class="field__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 6h16v12H4z" />
+                    <path d="m4 7 8 6 8-6" />
+                  </svg>
+                </span>
+                <input id="email" name="email" type="email" placeholder="seu@email.com" autocomplete="email" required />
+              </div>
+              <p class="field__error" data-error-for="email"></p>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="password">Senha</label>
+              <div class="field__control">
+                <span class="field__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M7 11V8a5 5 0 0 1 10 0v3" />
+                    <path d="M5 11h14v10H5z" />
+                  </svg>
+                </span>
+                <input id="password" name="password" type="password" placeholder="••••••••" autocomplete="new-password" required minlength="6" />
+                <button class="field__toggle" type="button" data-toggle-password aria-label="Mostrar/ocultar senha">
+                  <span data-toggle-label>Mostrar</span>
+                </button>
+              </div>
+              <div class="strength" aria-hidden="true">
+                <div class="strength__bar" data-strength-bar></div>
+              </div>
+              <p class="field__help" data-strength-text>Use letras, números e símbolos.</p>
+              <p class="field__error" data-error-for="password"></p>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="confirmPassword">Confirmar senha</label>
+              <div class="field__control">
+                <span class="field__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M7 11V8a5 5 0 0 1 10 0v3" />
+                    <path d="M5 11h14v10H5z" />
+                    <path d="m9 16 2 2 4-4" />
+                  </svg>
+                </span>
+                <input id="confirmPassword" name="confirmPassword" type="password" placeholder="••••••••" autocomplete="new-password" required minlength="6" />
+              </div>
+              <p class="field__error" data-error-for="confirmPassword"></p>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="country">País</label>
+              <div class="field__control">
+                <span class="field__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M2 12h20" />
+                    <path d="M12 2a15 15 0 0 1 0 20" />
+                    <path d="M12 2a15 15 0 0 0 0 20" />
+                  </svg>
+                </span>
+                <select id="country" name="country" required>
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="BR">Brasil</option>
+                  <option value="PT">Portugal</option>
+                  <option value="AR">Argentina</option>
+                  <option value="MX">México</option>
+                  <option value="US">Estados Unidos</option>
+                </select>
+              </div>
+              <p class="field__error" data-error-for="country"></p>
+            </div>
+
+            <div class="auth-row auth-row--stack">
+              <label class="check">
+                <input type="checkbox" name="terms" required />
+                <span class="check__box" aria-hidden="true"></span>
+                <span class="check__label">
+                  Aceito os <a class="link" href="#">Termos</a> e a <a class="link" href="#">Política de Privacidade</a>.
+                </span>
+              </label>
+              <p class="field__error" data-error-for="terms"></p>
+            </div>
+
+            <button class="btn btn--primary" type="submit" id="registerSubmit">
+              <span class="btn__label">Criar conta</span>
+              <span class="btn__loader" aria-hidden="true"></span>
+            </button>
+
+            <div class="auth-divider"><span>já tem conta?</span></div>
+
+            <a class="btn btn--ghost" href="/login.html">Ir para login</a>
+
+            <p class="auth-footnote" id="registerStatus" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+
+        <p class="auth-legal">
+          Protegido por padrões modernos de segurança e criptografia.
+        </p>
+      </section>
+    </main>
+
+    <script src="/auth-config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/auth.js"></script>
+  </body>
+</html>

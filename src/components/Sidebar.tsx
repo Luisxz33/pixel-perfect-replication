@@ -1,19 +1,56 @@
-import { Home, Gamepad2, Radio, Gift, Trophy, Crown, Link, FileText, ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
+import { Home, Gamepad2, Radio, Trophy, ChevronLeft, ChevronRight } from "lucide-react";
+import { useEffect, useState } from "react";
+import { NavLink } from "@/components/NavLink";
+import { useAuth } from "@/providers/AuthProvider";
+import { getBalance } from "@/lib/casino";
 
 const navItems = [
-  { icon: Home, label: "Home", active: true },
-  { icon: Gamepad2, label: "Race Slots" },
-  { icon: Radio, label: "Live Casino" },
-  { icon: Gift, label: "Promotions" },
-  { icon: Trophy, label: "Tournaments" },
-  { icon: Crown, label: "VIP Club" },
-  { icon: Link, label: "Quick Links" },
-  { icon: FileText, label: "Log" },
+  { icon: Home, label: "Home", to: "/" },
+  { icon: Trophy, label: "Apostas Esportivas", to: "/sports" },
+  { icon: Radio, label: "Cassino Ao Vivo", to: "/live" },
+  { icon: Gamepad2, label: "Slots", to: "/slots" },
 ];
 
 export default function Sidebar() {
   const [collapsed, setCollapsed] = useState(false);
+  const { user, isReady } = useAuth();
+  const [balance, setBalance] = useState<number | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const run = async () => {
+      if (!isReady) return;
+      if (!user) {
+        setBalance(null);
+        return;
+      }
+
+      try {
+        const next = await getBalance();
+        if (!cancelled) setBalance(next);
+      } catch (err) {
+        console.error(err);
+        if (!cancelled) setBalance(null);
+      }
+    };
+
+    void run();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [isReady, user?.id]);
+
+  const formattedBalance =
+    balance === null
+      ? "R$ —"
+      : new Intl.NumberFormat("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        }).format(balance);
 
   return (
     <aside
@@ -41,25 +78,23 @@ export default function Sidebar() {
       {/* Balance */}
       {!collapsed && (
         <div className="px-4 py-3 border-b border-sidebar-border">
-          <p className="text-[10px] uppercase tracking-widest text-muted-foreground">Balance</p>
-          <p className="text-gold font-display text-lg font-bold">€2,847.50</p>
+          <p className="text-[10px] uppercase tracking-widest text-muted-foreground">Saldo</p>
+          <p className="text-gold font-display text-lg font-bold">{formattedBalance}</p>
         </div>
       )}
 
       {/* Nav */}
       <nav className="flex-1 py-3 space-y-0.5 overflow-y-auto px-2">
         {navItems.map((item) => (
-          <button
+          <NavLink
             key={item.label}
-            className={`flex items-center gap-3 w-full px-3 py-2.5 rounded-md text-sm transition-colors duration-150 active:scale-[0.97] ${
-              item.active
-                ? "bg-sidebar-accent text-sidebar-accent-foreground"
-                : "text-sidebar-foreground hover:bg-sidebar-accent/50 hover:text-sidebar-accent-foreground"
-            }`}
+            to={item.to}
+            className="flex items-center gap-3 w-full px-3 py-2.5 rounded-md text-sm transition-colors duration-150 active:scale-[0.97] text-sidebar-foreground hover:bg-sidebar-accent/50 hover:text-sidebar-accent-foreground"
+            activeClassName="bg-sidebar-accent text-sidebar-accent-foreground [&>svg]:text-primary"
           >
-            <item.icon size={18} className={item.active ? "text-primary" : ""} />
+            <item.icon size={18} />
             {!collapsed && <span className="whitespace-nowrap">{item.label}</span>}
-          </button>
+          </NavLink>
         ))}
       </nav>
 

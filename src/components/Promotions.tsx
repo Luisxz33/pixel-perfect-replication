@@ -12,7 +12,7 @@ const promos = [
   {
     img: promoFastlane,
     title: "Fast Lane Bonus",
-    desc: "Deposit within 15 minutes and get a 50% speed bonus up to €500.",
+    desc: "Deposit within 15 minutes and get a 50% speed bonus up to R$ 500.",
     cta: "Claim Now",
   },
 ];

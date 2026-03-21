@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Entrar • Grand Prix</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body class="auth">
+    <main class="auth-shell" data-page="login">
+      <section class="auth-left" aria-label="Banner">
+        <div class="auth-left__overlay"></div>
+        <div class="auth-left__particles" aria-hidden="true"></div>
+        <div class="auth-left__content">
+          <div class="brand">
+            <div class="brand__mark" aria-hidden="true">GP</div>
+            <div class="brand__text">
+              <span class="brand__name">GRAND PRIX</span>
+              <span class="brand__sub">Apostas & Cassino</span>
+            </div>
+          </div>
+
+          <h1 class="auth-left__title">Plataforma de Apostas Esportivas e Cassino Online</h1>
+          <p class="auth-left__subtitle">
+            Entre com sua conta para acessar odds, cassino ao vivo e promoções exclusivas.
+          </p>
+
+          <div class="auth-left__highlights">
+            <div class="pill">Tema escuro premium</div>
+            <div class="pill">Saques rápidos</div>
+            <div class="pill">Odds competitivas</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="auth-right" aria-label="Login">
+        <div class="auth-card" role="region" aria-label="Formulário de login">
+          <div class="auth-card__header">
+            <div class="brand brand--compact">
+              <div class="brand__mark" aria-hidden="true">GP</div>
+              <div class="brand__text">
+                <span class="brand__name">GRAND PRIX</span>
+                <span class="brand__sub">Apostas & Cassino</span>
+              </div>
+            </div>
+            <p class="auth-card__hint">Acesse sua conta</p>
+          </div>
+
+          <form id="loginForm" class="auth-form" novalidate>
+            <div class="field">
+              <label class="field__label" for="email">E-mail</label>
+              <div class="field__control">
+                <span class="field__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 6h16v12H4z" />
+                    <path d="m4 7 8 6 8-6" />
+                  </svg>
+                </span>
+                <input id="email" name="email" type="email" placeholder="seu@email.com" autocomplete="email" required />
+              </div>
+              <p class="field__error" data-error-for="email"></p>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="password">Senha</label>
+              <div class="field__control">
+                <span class="field__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M7 11V8a5 5 0 0 1 10 0v3" />
+                    <path d="M5 11h14v10H5z" />
+                  </svg>
+                </span>
+                <input id="password" name="password" type="password" placeholder="••••••••" autocomplete="current-password" required minlength="6" />
+                <button class="field__toggle" type="button" data-toggle-password aria-label="Mostrar/ocultar senha">
+                  <span data-toggle-label>Mostrar</span>
+                </button>
+              </div>
+              <p class="field__error" data-error-for="password"></p>
+            </div>
+
+            <div class="auth-row">
+              <label class="check">
+                <input type="checkbox" name="remember" />
+                <span class="check__box" aria-hidden="true"></span>
+                <span class="check__label">Lembrar de mim</span>
+              </label>
+
+              <a class="link" href="#" id="forgotPassword">Esqueci minha senha</a>
+            </div>
+
+            <button class="btn btn--primary" type="submit" id="loginSubmit">
+              <span class="btn__label">Entrar</span>
+              <span class="btn__loader" aria-hidden="true"></span>
+            </button>
+
+            <div class="auth-divider"><span>ou</span></div>
+
+            <a class="btn btn--ghost" href="/register.html">Criar uma conta</a>
+
+            <p class="auth-footnote" id="loginStatus" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+
+        <p class="auth-legal">
+          Ao continuar, você concorda com nossos <a class="link" href="#">Termos</a> e <a class="link" href="#">Política de Privacidade</a>.
+        </p>
+      </section>
+    </main>
+
+    <script src="/auth-config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/auth.js"></script>
+  </body>
+</html>
