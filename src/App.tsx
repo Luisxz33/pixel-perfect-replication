@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -8,9 +8,27 @@ import Index from "./pages/Index.tsx";
 import Sports from "./pages/Sports.tsx";
 import Live from "./pages/Live.tsx";
 import Slots from "./pages/Slots.tsx";
+import CandyMultiverse from "./pages/CandyMultiverse.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
+
+const router = createBrowserRouter(
+  [
+    { path: "/", element: <Index /> },
+    { path: "/sports", element: <Sports /> },
+    { path: "/live", element: <Live /> },
+    { path: "/slots", element: <Slots /> },
+    { path: "/candy-multiverse", element: <CandyMultiverse /> },
+    { path: "*", element: <NotFound /> },
+  ],
+  {
+    future: {
+      v7_startTransition: true,
+      v7_relativeSplatPath: true,
+    },
+  },
+);
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -18,16 +36,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <AuthProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/sports" element={<Sports />} />
-            <Route path="/live" element={<Live />} />
-            <Route path="/slots" element={<Slots />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
+        <RouterProvider router={router} />
       </AuthProvider>
     </TooltipProvider>
   </QueryClientProvider>

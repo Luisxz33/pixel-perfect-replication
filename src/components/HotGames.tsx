@@ -1,26 +1,20 @@
-import gamePokerSlots from "@/assets/game-poker-slots.jpg";
-import gameRoulette from "@/assets/game-roulette.jpg";
-import gameBlackjack from "@/assets/game-blackjack.jpg";
-import gameLiveCasino from "@/assets/game-live-casino.jpg";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { logGameAccess } from "@/lib/casino";
 import { NavLink } from "@/components/NavLink";
+import { defaultHotGames, type HotGame } from "@/lib/hotGames";
 
-const games = [
-  { key: "poker-slots", img: gamePokerSlots, title: "Poker Slots", subtitle: "F1 Red Car", category: "Race Slots" },
-  { key: "roulette-raceway", img: gameRoulette, title: "Roulette Raceway", subtitle: "Wheel & Paddock", category: "Race Slots" },
-  { key: "blackjack-speedway", img: gameBlackjack, title: "Blackjack Speedway", subtitle: "Cards & Helmets", category: "Blackjack" },
-  { key: "live-casino-grand-prix", img: gameLiveCasino, title: "Live Casino Grand Prix", subtitle: "Dealer & Track", category: "Live Casino" },
-];
+type HotGamesProps = {
+  games?: HotGame[];
+};
 
-export default function HotGames() {
+export default function HotGames({ games = defaultHotGames }: HotGamesProps) {
   const ref = useScrollReveal();
 
   return (
     <section ref={ref} className="reveal">
       <div className="flex items-center justify-between mb-5">
         <h2 className="font-display text-foreground text-xl md:text-2xl uppercase tracking-wide">
-          🔥 Hot Games
+          🔥 kingdom of legends
         </h2>
         <NavLink
           to="/slots"
@@ -33,7 +27,7 @@ export default function HotGames() {
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {games.map((game, i) => (
           <div
-            key={game.title}
+            key={game.key}
             className="group relative bg-card rounded-lg overflow-hidden border border-border hover:border-primary/40 transition-all duration-300 cursor-pointer"
             style={{ transitionDelay: `${i * 60}ms` }}
             onClick={() => {
@@ -59,9 +53,12 @@ export default function HotGames() {
 
             {/* Hover overlay */}
             <div className="absolute inset-0 bg-background/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-              <span className="bg-primary text-primary-foreground font-display uppercase text-xs tracking-wider px-5 py-2.5 rounded-md active:scale-95 transition-transform">
+              <NavLink
+                to="/candy-multiverse"
+                className="bg-primary text-primary-foreground font-display uppercase text-xs tracking-wider px-5 py-2.5 rounded-md active:scale-95 transition-transform"
+              >
                 Play Now
-              </span>
+              </NavLink>
             </div>
           </div>
         ))}
