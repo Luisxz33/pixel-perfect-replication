@@ -75,8 +75,8 @@ export type RtpConfig = {
 
 export type GameConfig = {
   name: "Candy Multiverse";
-  gridBase: { rows: 7; cols: 7 };
-  gridMega: { rows: 10; cols: 10 };
+  gridBase: { rows: number; cols: number };
+  gridMega: { rows: number; cols: number };
 
   // Cluster wins start at 9 symbols.
   minClusterWin: 9;

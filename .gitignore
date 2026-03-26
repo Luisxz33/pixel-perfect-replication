@@ -17,6 +17,9 @@ dist-ssr
 .env.*
 !.env.example
 
+# Generated (contains Supabase keys)
+public/auth-config.js
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

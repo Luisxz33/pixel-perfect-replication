@@ -2,7 +2,9 @@ import LobbyLayout from "@/components/LobbyLayout";
 import { CandyMultiverseEngine } from "@/game/engine/candyMultiverseEngine";
 import { candyMultiverseConfig } from "@/game/engine/config";
 import type { Grid, GridCell, SpinResult, SymbolId } from "@/game/types";
+import { Aperture, Apple, Bomb, Coins, Diamond, Sparkles, Star, Zap } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
+import candyMultiverseBg from "@/assets/Gemini_Generated_Image_7k4onj7k4onj7k4o.png";
 
 function formatCredits(n: number) {
   return new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 2 }).format(n);
@@ -37,6 +39,30 @@ function symbolLabel(id: SymbolId) {
   }
 }
 
+function symbolIcon(id: SymbolId) {
+  if (id.startsWith("bomb_")) return Bomb;
+  switch (id) {
+    case "candy":
+      return Sparkles;
+    case "fruit":
+      return Apple;
+    case "star":
+      return Star;
+    case "neon_gem":
+      return Zap;
+    case "golden_candy":
+      return Coins;
+    case "diamond_candy":
+      return Diamond;
+    case "mega_fruit":
+      return Sparkles;
+    case "portal":
+      return Aperture;
+    default:
+      return null;
+  }
+}
+
 function tileClasses(id: SymbolId) {
   if (id === "portal") return "bg-primary/10 border-primary/30 text-primary";
   if (id.startsWith("bomb_")) return "bg-muted/70 border-border text-gold";
@@ -63,8 +89,10 @@ function GridView({ grid }: { grid: Grid }) {
     >
       {grid.flatMap((row, r) =>
         row.map((cell, c) => {
-          const content = cell ? symbolLabel(cell.id) : "";
           const id = cell?.id ?? ("candy" as SymbolId);
+          const content = cell ? symbolLabel(cell.id) : "";
+          const Icon = cell ? symbolIcon(cell.id) : null;
+
           return (
             <div
               key={`${r}:${c}:${(cell as GridCell | null)?.uid ?? "empty"}`}
@@ -74,7 +102,12 @@ function GridView({ grid }: { grid: Grid }) {
               }`}
               aria-label={cell ? `Symbol ${cell.id}` : "Empty"}
             >
-              {content}
+              {cell ? (
+                <div className="flex flex-col items-center justify-center gap-1 leading-none">
+                  {Icon ? <Icon className="size-4 md:size-5" aria-hidden="true" /> : null}
+                  <span>{content}</span>
+                </div>
+              ) : null}
             </div>
           );
         }),
@@ -215,7 +248,15 @@ export default function CandyMultiverse() {
 
   return (
     <LobbyLayout title="Candy Multiverse">
-      <section className="bg-card rounded-lg border border-border p-5 space-y-5">
+      <section
+        className="rounded-lg border border-border overflow-hidden"
+        style={{
+          backgroundImage: `url(${candyMultiverseBg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="bg-background/80 backdrop-blur-sm p-5 space-y-5">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>
             <h1 className="font-display text-foreground text-xl md:text-2xl uppercase tracking-wide">
@@ -247,7 +288,9 @@ export default function CandyMultiverse() {
             <p className="text-[10px] uppercase tracking-widest text-muted-foreground">Modo</p>
             <p className="text-[10px] uppercase tracking-widest text-muted-foreground">{modeLabel}</p>
           </div>
-          <GridView grid={grid} />
+          <div className="flex justify-center">
+            <GridView grid={grid} />
+          </div>
 
           {lastResult ? (
             <div className="mt-4 flex flex-wrap gap-2">
@@ -348,6 +391,7 @@ export default function CandyMultiverse() {
             Cluster win mínimo: <span className="text-foreground">9 símbolos</span>. Cada cascade aumenta o Chain Reaction
             (1x→2x→3x→5x→8x→12x→20x). Portais aplicam efeitos aleatórios e 4 portais iniciam Sugar Storm.
           </p>
+        </div>
         </div>
       </section>
     </LobbyLayout>

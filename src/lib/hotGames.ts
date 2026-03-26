@@ -9,6 +9,7 @@ export type HotGame = {
   title: string;
   subtitle: string;
   category: string;
+  playPath?: string;
 };
 
 export const defaultHotGames: HotGame[] = [

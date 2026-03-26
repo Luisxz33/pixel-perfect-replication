@@ -2,7 +2,7 @@ import type { GameConfig } from "@/game/types";
 
 export const candyMultiverseConfig: GameConfig = {
   name: "Candy Multiverse",
-  gridBase: { rows: 7, cols: 7 },
+  gridBase: { rows: 5, cols: 6 },
   gridMega: { rows: 10, cols: 10 },
   minClusterWin: 9,
   chainMultipliers: [1, 2, 3, 5, 8, 12, 20],

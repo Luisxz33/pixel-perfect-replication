@@ -8,29 +8,29 @@ type StandingRow = {
 };
 
 const driverStandings: StandingRow[] = [
-  { pos: 1, name: "Max Verstappen", team: "Red Bull Racing", points: 0 },
-  { pos: 2, name: "Lando Norris", team: "McLaren", points: 0 },
-  { pos: 3, name: "Charles Leclerc", team: "Ferrari", points: 0 },
-  { pos: 4, name: "Lewis Hamilton", team: "Ferrari", points: 0 },
-  { pos: 5, name: "George Russell", team: "Mercedes", points: 0 },
-  { pos: 6, name: "Oscar Piastri", team: "McLaren", points: 0 },
-  { pos: 7, name: "Sergio Pérez", team: "Red Bull Racing", points: 0 },
-  { pos: 8, name: "Fernando Alonso", team: "Aston Martin", points: 0 },
-  { pos: 9, name: "Carlos Sainz", team: "Williams", points: 0 },
-  { pos: 10, name: "Pierre Gasly", team: "Alpine", points: 0 },
+  { pos: 1, name: "George Russell", team: "Mercedes", points: 51 },
+  { pos: 2, name: "Kimi Antonelli", team: "Mercedes", points: 47 },
+  { pos: 3, name: "Charles Leclerc", team: "Ferrari", points: 34 },
+  { pos: 4, name: "Lewis Hamilton", team: "Ferrari", points: 33 },
+  { pos: 5, name: "Oliver Bearman", team: "Haas", points: 17 },
+  { pos: 6, name: "Lando Norris", team: "McLaren", points: 15 },
+  { pos: 7, name: "Pierre Gasly", team: "Alpine", points: 9 },
+  { pos: 8, name: "Max Verstappen", team: "Red Bull", points: 8 },
+  { pos: 9, name: "Liam Lawson", team: "Racing Bulls", points: 8 },
+  { pos: 10, name: "Arvid Lindblad", team: "Racing Bulls", points: 4 },
 ];
 
 const constructorStandings: StandingRow[] = [
-  { pos: 1, name: "McLaren", team: "Construtores", points: 0 },
-  { pos: 2, name: "Red Bull Racing", team: "Construtores", points: 0 },
-  { pos: 3, name: "Ferrari", team: "Construtores", points: 0 },
-  { pos: 4, name: "Mercedes", team: "Construtores", points: 0 },
-  { pos: 5, name: "Aston Martin", team: "Construtores", points: 0 },
-  { pos: 6, name: "Alpine", team: "Construtores", points: 0 },
-  { pos: 7, name: "Williams", team: "Construtores", points: 0 },
-  { pos: 8, name: "RB", team: "Construtores", points: 0 },
-  { pos: 9, name: "Sauber", team: "Construtores", points: 0 },
-  { pos: 10, name: "Haas", team: "Construtores", points: 0 },
+  { pos: 1, name: "Mercedes", team: "Construtores", points: 98 },
+  { pos: 2, name: "Ferrari", team: "Construtores", points: 67 },
+  { pos: 3, name: "McLaren", team: "Construtores", points: 18 },
+  { pos: 4, name: "Haas", team: "Construtores", points: 17 },
+  { pos: 5, name: "Red Bull", team: "Construtores", points: 12 },
+  { pos: 6, name: "Racing Bulls", team: "Construtores", points: 12 },
+  { pos: 7, name: "Alpine", team: "Construtores", points: 1 },
+  { pos: 8, name: "Audi", team: "Construtores", points: 2 },
+  { pos: 9, name: "Williams", team: "Construtores", points: 2 },
+  { pos: 10, name: "Cadillac", team: "Construtores", points: 0 },
 ];
 
 const posColors: Record<number, string> = {
